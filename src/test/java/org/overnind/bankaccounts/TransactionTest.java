@@ -70,8 +70,8 @@ public class TransactionTest {
 
     @Test
     public void testOverflow() {
-        Account from = Account.of(0, Integer.MAX_VALUE - 50);
-        Account to = Account.of(1, 500);
+        Account from = Account.of(0, 500);
+        Account to = Account.of(1, Integer.MAX_VALUE - 50);
 
         Transaction transaction = Transaction.of(from, to, 100);
 
@@ -79,10 +79,10 @@ public class TransactionTest {
                 .isEqualTo(TransactionResult.OVERFLOW);
 
         assertThat(from)
-                .isEqualTo(Account.of(0, Integer.MAX_VALUE - 50));
+                .isEqualTo(Account.of(0, 500));
 
         assertThat(to)
-                .isEqualTo(Account.of(1, 500));
+                .isEqualTo(Account.of(1, Integer.MAX_VALUE - 50));
     }
 
     @Test
